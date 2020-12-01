@@ -81,10 +81,16 @@ class SpotifyAPI(object):
 
 # function to get parse out the info I want, and print it out line by line
     def artist_track_name(self):
+        # adding the names into a list is probably better for graphing, so I added list_names to this. Will change if need be
+        
+        # I also deleted combined_names. seemed pointless to make it a variable
+        list_names = []
         for i in range(len(spotify.history['items'])):
             track_name = spotify.history['items'][i]['track']['name']
             artist_name = spotify.history['items'][i]['track']['artists'][0]['name']
             print(artist_name + ' - ' + track_name + '\n')
+            list_names.append(artist_name + ' - ' + track_name)
+        return list_names
 
 
 spotify = SpotifyAPI(client_id, client_secret)
